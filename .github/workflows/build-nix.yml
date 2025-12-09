@@ -1,3 +1,14 @@
+# This workflow is disabled due to Nix errors. Use non-nix version instead.
+on:
+  workflow_dispatch:  # 手動実行のみに制限
+  pull_request:
+    types: [closed]  # PR クローズ時のみ（実質無効）
+jobs:
+  build:
+    if: false  # すべてのジョブを無効化
+    runs-on: ubuntu-latest
+    # ... 残りは変更なし
+
 name: Build ZMK firmware (nix)
 on:
   workflow_dispatch:
@@ -105,4 +116,5 @@ jobs:
           webhook_url: ${{ secrets.DISCORD_WEBHOOK_URL }}
           title: Completed
           message: Completed
+
         if: ${{ always() }}
